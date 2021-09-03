@@ -1,0 +1,30 @@
+---
+title: "Test map"
+output: html_document
+---
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol@0.74.0/dist/L.Control.Locate.min.css" />
+
+<script src="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol@0.74.0/dist/L.Control.Locate.min.js" charset="utf-8"></script>
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(leaflet)
+library(leaflet.extras)
+```
+
+```{r}
+your_map <- leaflet() %>% 
+  addTiles() %>%
+  setView(-71.0382679, 42.3489054, zoom = 18) %>%
+  addControlGPS(
+    options = gpsOptions(
+      position = "topleft",
+      activate = TRUE, 
+      autoCenter = TRUE,
+      setView = TRUE))
+activateGPS(your_map)
+```
+
